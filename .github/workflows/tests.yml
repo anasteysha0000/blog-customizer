@@ -23,10 +23,8 @@ jobs:
       run: npm install
     - name: delete cache Playwright
       run: rm -rf /home/runner/.cache/ms-playwright
-    - name: install playwright
-      run: npm install playwright@1.25.0 --save-dev
     - name: install playwright v2
-      run: npx playwright install
+      run: npx playwright@1.25.0 install --with-deps
     - name: Run tests
       run: bash /tmp/tests-blog-customizer/run.sh
     - uses: actions/upload-artifact@v3
