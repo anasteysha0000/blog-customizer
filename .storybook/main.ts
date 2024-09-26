@@ -60,6 +60,7 @@ const config: StorybookConfig = {
 				],
 			},
 		},
+		'@storybook/addon-webpack5-compiler-swc',
 	],
 	webpackFinal: async (config) => {
 		if (config?.resolve?.alias) {
@@ -72,14 +73,7 @@ const config: StorybookConfig = {
 
 		return config;
 	},
-	framework: {
-		name: '@storybook/react-webpack5',
-		options: {
-			builder: {
-				useSWC: true,
-			},
-		},
-	},
+	framework: '@storybook/react-webpack5',
 	swc: () => ({
 		jsc: {
 			transform: {
