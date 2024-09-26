@@ -23,7 +23,9 @@ jobs:
       run: npm install
 
     - name: install playwright
-      run: npx playwright install --with-deps
+      run: npm install playwright@1.25.0 --save-dev
+    - name: install playwright v2
+      run: npx playwright install
     - name: Run tests
       run: bash /tmp/tests-blog-customizer/run.sh
     - uses: actions/upload-artifact@v3
