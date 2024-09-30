@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import arrow from 'src/images/arrow.svg';
 import styles from './ArrowButton.module.scss';
 import clsx from 'clsx';
@@ -39,4 +39,3 @@ export const ArrowButton = forwardRef<HTMLDivElement, Props>(
 		);
 	}
 );
-ArrowButton.displayName = 'ArrowButton';

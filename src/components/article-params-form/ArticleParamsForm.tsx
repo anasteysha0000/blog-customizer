@@ -1,9 +1,9 @@
 import { ArrowButton } from 'src/components/arrow-button';
-import { Button } from 'src/ui/button';
+import { Button } from 'src/components/button';
 import { FormEvent, useEffect, useRef, useState } from 'react';
 import styles from './ArticleParamsForm.module.scss';
 import clsx from 'clsx';
-import { Text } from 'src/ui/text';
+import { Text } from 'src/components/text';
 import {
 	ArticleStateType,
 	backgroundColors,
@@ -43,7 +43,7 @@ export const ArticleParamsForm = ({
 	const formElementRef = useRef<HTMLFormElement>(null);
 	const arrowButtonRef = useRef<HTMLDivElement>(null);
 
-	const toggleForm = () => {
+	const handleToggleForm = () => {
 		setIsFormOpen((prevState) => !prevState);
 	};
 
@@ -54,7 +54,7 @@ export const ArticleParamsForm = ({
 		}));
 	};
 
-	const formResetHandler = () => {
+	const handleFormReset = () => {
 		const resetState: typeof formState = {
 			fontFamily: defaultArticleState.fontFamilyOption,
 			fontSize: defaultArticleState.fontSizeOption,
@@ -67,7 +67,7 @@ export const ArticleParamsForm = ({
 		setArticleState(defaultArticleState);
 	};
 
-	const formSubmitHandler = (evt: FormEvent) => {
+	const handleFormSubmit = (evt: FormEvent) => {
 		evt.preventDefault();
 
 		const updatedState: Partial<ArticleStateType> = {
@@ -111,7 +111,7 @@ export const ArticleParamsForm = ({
 	return (
 		<>
 			<ArrowButton
-				onClick={toggleForm}
+				onClick={handleToggleForm}
 				isFormOpen={isFormOpen}
 				ref={arrowButtonRef}
 			/>
@@ -120,8 +120,8 @@ export const ArticleParamsForm = ({
 				<form
 					className={styles.form}
 					ref={formElementRef}
-					onSubmit={formSubmitHandler}
-					onReset={formResetHandler}>
+					onSubmit={handleFormSubmit}
+					onReset={handleFormReset}>
 					<Text size={31} weight={800} uppercase>
 						Задайте параметры
 					</Text>
@@ -175,8 +175,8 @@ export const ArticleParamsForm = ({
 					/>
 
 					<div className={styles.bottomContainer}>
-						<Button title='Сбросить' htmlType='reset' type='clear' />
-						<Button title='Применить' htmlType='submit' type='apply' />
+						<Button title='Сбросить' type='reset' />
+						<Button title='Применить' type='submit' />
 					</div>
 				</form>
 			</aside>
