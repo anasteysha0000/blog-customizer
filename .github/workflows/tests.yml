@@ -19,6 +19,12 @@ jobs:
       run: exit 1
     - name: Get testing lib
       run: set -eu && git clone https://github.com/Yandex-Practicum/tests-blog-customizer.git /tmp/tests-blog-customizer
+    - name: install dependencies
+      run: npm install
+    - name: delete cache Playwright
+      run: rm -rf /home/runner/.cache/ms-playwright
+    - name: install playwright v2
+      run: npx playwright@1.44.0 install --with-deps
     - name: Run tests
       run: bash /tmp/tests-blog-customizer/run.sh
     - uses: actions/upload-artifact@v3
